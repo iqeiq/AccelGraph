@@ -34,6 +34,10 @@ public class GraphView extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    public float getYmax() {
+        return Ymax;
+    }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -77,8 +81,8 @@ public class GraphView extends View {
             int j = (idx + i) % ndata;
             int x1 = x0 + dw * i;
             int x2 = x0 + dw * (i + 1);
-            int y1 = (int) (y0 + dh * vs[j]);
-            int y2 = (int) (y0 + dh * vs[(j + 1) % ndata]);
+            int y1 = (int) (y0 - dh * vs[j]);
+            int y2 = (int) (y0 - dh * vs[(j + 1) % ndata]);
             canvas.drawLine(x1, y1, x2, y2, paint);
         }
     }
